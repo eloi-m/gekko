@@ -1,14 +1,14 @@
 import React from 'react';
 
 // eslint-disable-next-line no-unused-vars
-import { input } from './Components/input';
+import TextInputs from './Components/TextInputs';
 
 
 class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<input/>
+				<TextInputs/>
 			</div>
 		);
 	}
