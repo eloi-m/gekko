@@ -4,27 +4,32 @@ import { Form, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
-class TextInputs extends React.Component {
+
+class CustomInput extends React.Component {
 	state = {
     content: ""
 	}
 
-  onHandleChange = (e) => {
+	onHandleChange = (e) => {
+		const value = e.target.value
     this.setState({
-      content: e.target.value
+		content: value
 		});
-		console.log(this.state.content)
-  }
+		this.props.onChange(value)
+	}
 
 	render() {
+		const {placeholder, type} = this.props;
 		return (
 			<Form>
+				{placeholder}
 				<FormControl 
-					id="mainInput"
 					onChange={this.onHandleChange}
-					placeholder="Text"
 					value={this.state.content}
-					type="text"
+
+					id={placeholder + - +  type}
+					placeholder= {placeholder}
+					type= {type}
 					/>
 			</Form>
 		);
@@ -33,4 +38,4 @@ class TextInputs extends React.Component {
 
 
 
-export default TextInputs;
+export default CustomInput;
