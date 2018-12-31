@@ -3,7 +3,9 @@ import React from 'react';
 import { Form, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 
-
+const STYLE = {
+	width :"50%"
+};
 
 class CustomInput extends React.Component {
 	state = {
@@ -21,7 +23,7 @@ class CustomInput extends React.Component {
 	render() {
 		const {placeholder, type} = this.props;
 		return (
-			<Form>
+			<Form style={STYLE}>
 				{placeholder}
 				<FormControl 
 					onChange={this.onHandleChange}
