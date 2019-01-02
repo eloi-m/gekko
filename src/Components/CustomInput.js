@@ -1,7 +1,7 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { Form, FormControl } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap.css'
 
 const STYLE = {
 	width :"50%"
@@ -21,17 +21,17 @@ class CustomInput extends React.Component {
 	}
 
 	render() {
-		const {placeholder, type} = this.props;
+		const {placeholder, type, title} = this.props;
 		return (
 			<Form style={STYLE}>
-				{placeholder}
+				{title}
 				<FormControl 
 					onChange={this.onHandleChange}
 					value={this.state.content}
 
 					id={placeholder + - +  type}
 					placeholder= {placeholder}
-					type= {type}
+					type={type}
 					/>
 			</Form>
 		);
