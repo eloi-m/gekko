@@ -21,13 +21,13 @@ class CustomInput extends React.Component {
 	}
 
 	render() {
-		const {placeholder, type, title} = this.props;
+		const {placeholder, type, title, value} = this.props;
 		return (
 			<Form style={STYLE}>
 				{title}
 				<FormControl 
 					onChange={this.onHandleChange}
-					value={this.state.content}
+					value={value}
 
 					id={placeholder + - +  type}
 					placeholder= {placeholder}

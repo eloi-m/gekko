@@ -40,7 +40,6 @@ class App extends React.Component {
 						<button onClick={() => reactSwipeEl.next()}>Next</button>
 						<button onClick={() => reactSwipeEl.prev()}>Previous</button>
 					</div>
-
 				</div>
 			</div>			
 		);
