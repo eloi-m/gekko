@@ -1,6 +1,10 @@
 import React from 'react';
 
-const STYLE = {}
+
+const SELECTED_STYLE = {
+    color: '#ff6333', fontSize: '36px'
+};
+const NOT_SELECTED_STYLE = {};
 
 class Icon extends React.Component {
     state = {
@@ -15,19 +19,23 @@ class Icon extends React.Component {
     }
 
     render() {
-        const { Icon } = this.props
+        const { Icon, isSelected } = this.props
         const { hovered } = this.state
+
+        const STYLE = isSelected ? SELECTED_STYLE : NOT_SELECTED_STYLE
+
         return (
-            <div color="inherit"
+            <div
                 onMouseEnter={() => this.toggleHoverOn()}
                 onMouseLeave={() => this.toggleHoverOff()}
                 style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
             >
                 <Icon
-                    style={hovered ?
-                        { ...STYLE, fontSize: '36px' }
-                        : { ...STYLE }}
-
+                    style={
+                        hovered
+                            ? { ...STYLE, fontSize: '36px' }
+                            : { ...STYLE }
+                    }
                 />
             </div>
         );

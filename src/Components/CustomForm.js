@@ -16,7 +16,7 @@ const BUTTON_STYLE = {
 	margin: '20px'
 }
 
-class CustomForm extends React.Component{
+class CustomForm extends React.Component {
 	state = {
 		title: '',
 		amount: '',
@@ -24,54 +24,54 @@ class CustomForm extends React.Component{
 	}
 
 	handleSubmit() {
-		const {title, amount, date} = this.state;
-		console.log(title,amount,date)
-		this.setState({title:'', amount:0, date:''})
+		const { title, amount, date } = this.state;
+		console.log(title, amount, date)
+		this.setState({ title: '', amount: '', date: '' })
 	}
 
 	render() {
-		const {title, amount, date} = this.state;
-		return(
+		const { title, amount, date } = this.state;
+		return (
 			<div>
-				<div style = {INPUT_STYLE}>		
+				<div style={INPUT_STYLE}>
 					<CustomInput
-						title= 'Title'
+						title='Title'
 						type='text'
 						placeholder='Enter title'
-						onChange = {newSelection => this.setState({title: newSelection})}
+						onChange={newSelection => this.setState({ title: newSelection })}
 						value={title}
 					/>
 				</div>
-				<div style = {INPUT_STYLE}>		
+				<div style={INPUT_STYLE}>
 					<CustomInput
-						title= 'Amount'
+						title='Amount'
 						type='number'
 						placeholder='Enter amount'
-						onChange = {newSelection => this.setState({amount: newSelection})}
+						onChange={newSelection => this.setState({ amount: newSelection })}
 						value={amount}
 					/>
 				</div>
-				<div style = {INPUT_STYLE}>		
+				<div style={INPUT_STYLE}>
 					<CustomInput
 						title='Date'
 						type='date'
 						placeholder='Enter date'
-						onChange = {newSelection => this.setState({date: newSelection})}
+						onChange={newSelection => this.setState({ date: newSelection })}
 						value={date}
 					/>
 				</div>
 				<div style={BUTTON_STYLE}>
-					<Button 
+					<Button
 						bsStyle="primary"
 						onClick={() => this.handleSubmit()}
-						disabled = {title === '' ||	 amount === '' ||	date === '' ? true : false}
+						disabled={title === '' || amount === '' || date === '' ? true : false}
 					>
 						Submit
     			</Button>
 				</div>
 
-		</div>
-  )
+			</div>
+		)
 	}
 }
 
