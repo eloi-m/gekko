@@ -11,7 +11,8 @@
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.2",
     "react-swipe": "^6.0.3",
-    "react-swipe-views": "0.0.12"
+    "react-swipe-views": "0.0.12",
+    "react-table": "^6.8.6"
   },
   "scripts": {
     "start": "react-scripts start",
