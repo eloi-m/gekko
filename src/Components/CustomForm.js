@@ -16,6 +16,8 @@ const BUTTON_STYLE = {
 	margin: '20px'
 }
 
+
+
 class CustomForm extends React.Component {
 	state = {
 		title: '',
@@ -61,13 +63,22 @@ class CustomForm extends React.Component {
 					/>
 				</div>
 				<div style={BUTTON_STYLE}>
+					<style type="text/css">
+						{`
+    							.btn-custom {
+        						background-color: #1da1f2;
+        						color: white;
+    							}
+    						`}
+					</style>
 					<Button
-						bsStyle="primary"
+						bsStyle="custom"
 						onClick={() => this.handleSubmit()}
 						disabled={title === '' || amount === '' || date === '' ? true : false}
+						type='submit'
 					>
 						Submit
-    			</Button>
+						</Button>
 				</div>
 
 			</div>

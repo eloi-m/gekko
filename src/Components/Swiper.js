@@ -6,24 +6,23 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CreateIcon from '@material-ui/icons/Create';
 import FilterDramaIcon from '@material-ui/icons/FilterDrama';
 import StarIcon from '@material-ui/icons/Star';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blueGrey';
 
 import Icon from './Icon';
 import CustomForm from './CustomForm';
 import Graphs from './Graphs';
 
-const THEME = createMuiTheme({
-	palette: {
-		primary: blue,
-	},
-});
 
 
 const ICON_STYLE = {
 	width: '33%',
 	display: 'flex',
 	justifyContent: 'center'
+};
+
+const APPBAR_STYLE = {
+	top: 'auto',
+	bottom: 0,
+	backgroundColor: '#15202b'
 };
 
 class Swiper extends React.Component {
@@ -56,39 +55,37 @@ class Swiper extends React.Component {
 					</div>
 				</ReactSwipe>
 
-				<MuiThemeProvider theme={THEME}>
-					<AppBar position="fixed" style={{ top: 'auto', bottom: 0, }} >
-						<Toolbar style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
-							<div
-								onClick={() => { reactSwipeEl.slide(0) }}
-								style={ICON_STYLE}
-							>
-								<Icon
-									Icon={CreateIcon}
-									isSelected={swiperPosition === 0 ? true : false}
-								/>
-							</div>
-							<div
-								onClick={() => { reactSwipeEl.slide(1) }}
-								style={ICON_STYLE}
-							>
-								<Icon
-									Icon={FilterDramaIcon}
-									isSelected={swiperPosition === 1 ? true : false}
-								/>
-							</div>
-							<div
-								onClick={() => { reactSwipeEl.slide(2) }}
-								style={ICON_STYLE}
-							>
-								<Icon
-									Icon={StarIcon}
-									isSelected={swiperPosition === 2 ? true : false}
-								/>
-							</div>
-						</Toolbar>
-					</AppBar>
-				</MuiThemeProvider>
+				<AppBar position="fixed" style={APPBAR_STYLE} >
+					<Toolbar style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
+						<div
+							onClick={() => { reactSwipeEl.slide(0) }}
+							style={ICON_STYLE}
+						>
+							<Icon
+								Icon={CreateIcon}
+								isSelected={swiperPosition === 0 ? true : false}
+							/>
+						</div>
+						<div
+							onClick={() => { reactSwipeEl.slide(1) }}
+							style={ICON_STYLE}
+						>
+							<Icon
+								Icon={FilterDramaIcon}
+								isSelected={swiperPosition === 1 ? true : false}
+							/>
+						</div>
+						<div
+							onClick={() => { reactSwipeEl.slide(2) }}
+							style={ICON_STYLE}
+						>
+							<Icon
+								Icon={StarIcon}
+								isSelected={swiperPosition === 2 ? true : false}
+							/>
+						</div>
+					</Toolbar>
+				</AppBar>
 
 
 			</div >

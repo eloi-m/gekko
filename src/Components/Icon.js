@@ -2,7 +2,8 @@ import React from 'react';
 
 
 const SELECTED_STYLE = {
-    color: '#ff6333', fontSize: '36px'
+    color: '#1da1f2',
+    fontSize: '36px'
 };
 const NOT_SELECTED_STYLE = {};
 

@@ -5,18 +5,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import blue from '@material-ui/core/colors/blueGrey';
 
-const THEME = createMuiTheme({
-	palette: {
-		primary: blue,
-	},
-});
 
 const ROOT_STYLE = {
 	flexGrow: 1,
-	boxShadow: 'none'
+	boxShadow: 'none',
+	backgroundColor: '#15202b'
 };
 
 const TEXT_STYLE = {
@@ -32,18 +26,16 @@ const BUTTON_STYLE = {
 class Header extends React.Component {
 	render() {
 		return (
-			<MuiThemeProvider theme={THEME}>
-				<AppBar position="static" style={ROOT_STYLE} >
-					<Toolbar>
-						<IconButton color="inherit" aria-label="Menu" style={BUTTON_STYLE}>
-							<MenuIcon />
-						</IconButton>
-						<Typography variant="h6" color="inherit" style={TEXT_STYLE}>
-							Gekko Menu
-						</Typography>
-					</Toolbar>
-				</AppBar>
-			</MuiThemeProvider >
+			<AppBar position="static" style={ROOT_STYLE} >
+				<Toolbar>
+					<IconButton color="inherit" aria-label="Menu" style={BUTTON_STYLE}>
+						<MenuIcon />
+					</IconButton>
+					<Typography variant="h6" color="inherit" style={TEXT_STYLE}>
+						Gekko
+					</Typography>
+				</Toolbar>
+			</AppBar>
 		);
 	}
 }

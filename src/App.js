@@ -7,23 +7,23 @@ const HEADER_STYLE = {
 };
 
 const BODY_STYLE = {
-	margin:'10px',
+	padding: '10px',
+	backgroundColor: '#10171e'
 };
-
 
 class App extends React.Component {
 
 
 	render() {
 		return (
-			<div> 
-				<div id='Header' style = {HEADER_STYLE}> 
-					<Header/>
+			<div>
+				<div id='Header' style={HEADER_STYLE}>
+					<Header />
 				</div>
-				<div id='Body' style = {BODY_STYLE}>
-					<Swiper/>
+				<div id='Body' style={BODY_STYLE}>
+					<Swiper />
 				</div>
-			</div>			
+			</div>
 		);
 	}
 }

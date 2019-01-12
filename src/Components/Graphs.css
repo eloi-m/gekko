@@ -6,6 +6,7 @@ body {
         sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: white
 }
 
 code {
@@ -91,7 +92,7 @@ code {
 }
 
 .ReactTable .rt-thead.-header {
-    background-color: #666;
+    background-color: #15202b;
     font-weight: bold;
     font-size: 14px;
     color: white;
@@ -314,7 +315,7 @@ code {
 }
 
 .ReactTable.-striped .rt-tr.-odd {
-    background: rgba(0, 0, 0, 0.03)
+    background: rgba(0, 0, 0, 0.3)
 }
 
 .ReactTable.-highlight .rt-tbody .rt-tr:not(.-padRow):hover {
