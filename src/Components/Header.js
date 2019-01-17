@@ -10,7 +10,7 @@ import MenuIcon from '@material-ui/icons/Menu';
 const ROOT_STYLE = {
 	flexGrow: 1,
 	boxShadow: 'none',
-	backgroundColor: '#15202b'
+	backgroundColor: '#1B3448'
 };
 
 const TEXT_STYLE = {

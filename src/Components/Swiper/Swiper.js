@@ -8,8 +8,9 @@ import FilterDramaIcon from '@material-ui/icons/FilterDrama';
 import StarIcon from '@material-ui/icons/Star';
 
 import Icon from './Icon';
-import CustomForm from './CustomForm';
-import Graphs from './Graphs';
+import CustomForm from './Form/CustomForm';
+import Table from './Table/Table';
+import Graphs from './Graphs/Graphs'
 
 
 
@@ -22,8 +23,9 @@ const ICON_STYLE = {
 const APPBAR_STYLE = {
 	top: 'auto',
 	bottom: 0,
-	backgroundColor: '#15202b'
+	backgroundColor: '#1B3448'
 };
+
 
 class Swiper extends React.Component {
 	state = {
@@ -48,10 +50,10 @@ class Swiper extends React.Component {
 						<CustomForm />
 					</div>
 					<div>
-						<Graphs />
+						<Table />
 					</div>
 					<div>
-						PANEL 3
+						<Graphs />
 					</div>
 				</ReactSwipe>
 
