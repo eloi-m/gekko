@@ -2,7 +2,10 @@
 import React from 'react';
 import ReactTable from 'react-table';
 
+import Popup from './Popup';
+
 import './Table.css';
+
 const rawData = [
 	{ 'title': 'Some money', 'amount': 21, 'date': '2017-12-01' },
 	{ 'title': 'Yep I spend too much', 'amount': 3, 'date': '2017-12-02' },
@@ -21,8 +24,26 @@ const columns = [{
 	accessor: 'date'
 }];
 
+
+
 class Table extends React.Component {
-	state = { data: rawData }
+	state = {
+		data: rawData,
+		showPopup: null
+	}
+
+	closePopup = () => {
+		this.setState({ showPopup: false });
+	}
+
+
+	renderPopup = () => {
+		return (
+			<Popup
+				closePopup={this.closePopup}
+			/>
+		)
+	}
 	render() {
 		const { data } = this.state
 		return (
@@ -37,7 +58,8 @@ class Table extends React.Component {
 					getTrProps={(state, rowInfo, column, instance) => {
 						return {
 							onClick: (e, handleOriginal) => {
-								console.log(rowInfo.row.title);
+								console.log(rowInfo.row);
+								this.setState({ showPopup: true })
 								// IMPORTANT! React-Table uses onClick internally to trigger
 								// events like expanding SubComponents and pivots.
 								// By default a custom 'onClick' handler will override this functionality.
@@ -50,6 +72,7 @@ class Table extends React.Component {
 						};
 					}}
 				/>
+				{this.state.showPopup && this.renderPopup()}
 			</div>
 		);
 	}
