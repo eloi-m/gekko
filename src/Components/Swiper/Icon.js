@@ -2,45 +2,46 @@ import React from 'react';
 
 
 const SELECTED_STYLE = {
-    color: '#1da1f2',
-    fontSize: '36px'
+	color: '#1da1f2',
+	fontSize: '36px'
 };
 const NOT_SELECTED_STYLE = {};
 
 class Icon extends React.Component {
-    state = {
-        hovered: false
-    }
 
-    toggleHoverOn() {
-        this.setState({ hovered: true })
-    }
-    toggleHoverOff() {
-        this.setState({ hovered: false })
-    }
+	state = {
+		hovered: false
+	}
 
-    render() {
-        const { Icon, isSelected } = this.props
-        const { hovered } = this.state
+	toggleHoverOn() {
+		this.setState({ hovered: true })
+	}
+	toggleHoverOff() {
+		this.setState({ hovered: false })
+	}
 
-        const STYLE = isSelected ? SELECTED_STYLE : NOT_SELECTED_STYLE
+	render() {
+		const { Icon, isSelected } = this.props
+		const { hovered } = this.state
 
-        return (
-            <div
-                onMouseEnter={() => this.toggleHoverOn()}
-                onMouseLeave={() => this.toggleHoverOff()}
-                style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
-            >
-                <Icon
-                    style={
-                        hovered
-                            ? { ...STYLE, fontSize: '36px' }
-                            : { ...STYLE }
-                    }
-                />
-            </div>
-        );
-    }
+		const STYLE = isSelected ? SELECTED_STYLE : NOT_SELECTED_STYLE
+
+		return (
+			<div
+				onMouseEnter={() => this.toggleHoverOn()}
+				onMouseLeave={() => this.toggleHoverOff()}
+				style={{ width: '100%', display: 'flex', justifyContent: 'center' }}
+			>
+				<Icon
+					style={
+						hovered
+							? { ...STYLE, fontSize: '36px' }
+							: { ...STYLE }
+					}
+				/>
+			</div>
+		);
+	}
 }
 
 
