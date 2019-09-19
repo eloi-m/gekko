@@ -32,6 +32,7 @@
     "file-loader": "2.0.0",
     "fork-ts-checker-webpack-plugin-alt": "0.4.14",
     "fs-extra": "7.0.0",
+    "google-spreadsheet": "^2.0.8",
     "html-webpack-plugin": "4.0.0-alpha.2",
     "identity-obj-proxy": "3.0.0",
     "jest": "23.6.0",
@@ -49,12 +50,14 @@
     "react-bootstrap": "^0.32.4",
     "react-dev-utils": "^7.0.0",
     "react-dom": "^16.7.0",
+    "react-loader": "^2.4.5",
     "react-new-window": "0.0.10",
     "react-swipe": "^6.0.3",
     "react-swipe-views": "0.0.12",
     "react-table": "^6.8.6",
     "resolve": "1.8.1",
     "sass-loader": "7.1.0",
+    "sheetrock": "^1.1.4",
     "style-loader": "0.23.0",
     "terser-webpack-plugin": "1.1.0",
     "url-loader": "1.1.1",
@@ -64,7 +67,7 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start": "node scripts/start.js",
+    "start": "open -a Google\\ Chrome --args --disable-web-security --user-data-dir=\"\" && node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },

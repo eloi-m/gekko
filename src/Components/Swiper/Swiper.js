@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CreateIcon from '@material-ui/icons/Create';
 import FilterDramaIcon from '@material-ui/icons/FilterDrama';
 import StarIcon from '@material-ui/icons/Star';
+import Loader from 'react-loader';
 
 import Icon from './Icon';
 import CustomForm from './Form/CustomForm';
@@ -30,6 +31,7 @@ const APPBAR_STYLE = {
 class Swiper extends React.Component {
 	state = {
 		swiperPosition: 0,
+		isTableLoaded: false
 	};
 
 	handleSwipe = index => {
@@ -38,12 +40,16 @@ class Swiper extends React.Component {
 
 	render() {
 		const { swiperPosition } = this.state;
+
 		let reactSwipeEl;
 		return (
 			<div>
 				<ReactSwipe
 					className="carousel"
-					swipeOptions={{ continuous: false, callback: this.handleSwipe }}
+					swipeOptions={{
+						continuous: false,
+						callback: this.handleSwipe
+					}}
 					ref={el => { (reactSwipeEl = el); }}
 				>
 					<div>

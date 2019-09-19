@@ -1,19 +1,20 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactTable from 'react-table';
+import {getData} from '../../../connection.js';
 
 import Popup from './Popup';
 
 import './Table.css';
 
 const rawData = [
-	{ 'title': 'Some money', 'amount': 21, 'date': '2017-12-01' },
-	{ 'title': 'Yep I spend too much', 'amount': 3, 'date': '2017-12-02' },
-	{ 'title': 'Another useless spending', 'amount': 2, 'date': '2011-12-21' }];
+	{ 'name': 'Some money', 'amount': 21, 'date': '2017-12-01' },
+	{ 'name': 'Yep I spend too much', 'amount': 3, 'date': '2017-12-02' },
+	{ 'name': 'Another useless spending', 'amount': 2, 'date': '2011-12-21' }];
 
 const columns = [{
-	Header: 'Title',
-	accessor: 'title'
+	Header: 'Name',
+	accessor: 'name'
 },
 {
 	Header: 'Amount',
@@ -29,8 +30,11 @@ const columns = [{
 class Table extends React.Component {
 	state = {
 		data: rawData,
-		showPopup: null
+		showPopup: null,
+		selectedRow: null
 	}
+
+
 
 	closePopup = () => {
 		this.setState({ showPopup: false });
@@ -38,9 +42,14 @@ class Table extends React.Component {
 
 
 	renderPopup = () => {
+		const { selectedRow } = this.state
+
+		getData()
+
 		return (
 			<Popup
 				closePopup={this.closePopup}
+				selectedRow={selectedRow}
 			/>
 		)
 	}
@@ -59,7 +68,7 @@ class Table extends React.Component {
 						return {
 							onClick: (e, handleOriginal) => {
 								console.log(rowInfo.row);
-								this.setState({ showPopup: true })
+								this.setState({ showPopup: true, selectedRow: rowInfo })
 								// IMPORTANT! React-Table uses onClick internally to trigger
 								// events like expanding SubComponents and pivots.
 								// By default a custom 'onClick' handler will override this functionality.

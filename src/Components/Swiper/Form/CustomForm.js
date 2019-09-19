@@ -2,6 +2,7 @@ import React from 'react';
 import CustomInput from './CustomInput';
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
+import { newData } from '../../../connection.js';
 
 
 const INPUT_STYLE = {
@@ -20,28 +21,28 @@ const BUTTON_STYLE = {
 
 class CustomForm extends React.Component {
 	state = {
-		title: '',
+		name: '',
 		amount: '',
 		date: ''
 	}
 
 	handleSubmit() {
-		const { title, amount, date } = this.state;
-		console.log(title, amount, date)
-		this.setState({ title: '', amount: '', date: '' })
+		console.log(typeof newData)
+		newData(this.state)
+		this.setState({ name: '', amount: '', date: '' })
 	}
 
 	render() {
-		const { title, amount, date } = this.state;
+		const { name, amount, date } = this.state;
 		return (
 			<div>
 				<div style={INPUT_STYLE}>
 					<CustomInput
-						title='Title'
+						title='Name'
 						type='text'
-						placeholder='Enter title'
-						onChange={newSelection => this.setState({ title: newSelection })}
-						value={title}
+						placeholder='Enter name'
+						onChange={newSelection => this.setState({ name: newSelection })}
+						value={name}
 					/>
 				</div>
 				<div style={INPUT_STYLE}>
@@ -74,7 +75,7 @@ class CustomForm extends React.Component {
 					<Button
 						bsStyle="custom"
 						onClick={() => this.handleSubmit()}
-						disabled={title === '' || amount === '' || date === '' ? true : false}
+						disabled={name === '' || amount === '' || date === '' ? true : false}
 						type='submit'
 					>
 						Submit

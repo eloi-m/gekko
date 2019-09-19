@@ -9,6 +9,7 @@ class Popup extends React.Component {
 	}
 
 	render() {
+		const { selectedRow } = this.props;
 		return (
 			<NewWindow>
 				<button
@@ -16,7 +17,9 @@ class Popup extends React.Component {
 				>
 					Click to close
 				</button>
-				
+				{selectedRow.row.date}
+
+
 			</NewWindow>
 		);
 	}
