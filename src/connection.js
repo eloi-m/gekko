@@ -19,9 +19,9 @@ const authCallback = (error) => {
 const getLastTenRowsCallback = (error, rows) => {
 	console.log(error);
 	const nameOfRows = rows.map((row) => {
-		return row.name
-	})
-	console.log(nameOfRows);
+		return row.name;
+	});
+
 };
 
 
@@ -71,8 +71,10 @@ export const getData = () => {
 
 		},
 		function getLastTenRows(step) {
-			doc.getRows(spreadsheet, getLastTenRowsCallback);
+			const data = doc.getRows(spreadsheet, getLastTenRowsCallback);
+			console.log(data);
 			step();
+			return data;
 		}
 	], function (err) {
 		if (err) {

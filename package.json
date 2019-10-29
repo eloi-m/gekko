@@ -48,6 +48,7 @@
     "react": "^16.7.0",
     "react-app-polyfill": "^0.2.0",
     "react-bootstrap": "^0.32.4",
+    "react-bootstrap-table": "^4.3.1",
     "react-dev-utils": "^7.0.0",
     "react-dom": "^16.7.0",
     "react-loader": "^2.4.5",
@@ -67,7 +68,8 @@
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start": "open -a Google\\ Chrome --args --disable-web-security --user-data-dir=\"\" && node scripts/start.js",
+    "start": "node scripts/start.js",
+    "start-desktop": "open -a Google\\ Chrome --args --disable-web-security --user-data-dir=\"\" && node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },

@@ -6,13 +6,13 @@ import sheetrock from 'sheetrock';
 
 class Graphs extends React.Component {
 	state = {
-		data: 'test'
+		data: "test, je comprends pas ce qu'il se passe"
 	}
 
 	myCallback = (error, options, response) => {
 		if (!error) {
-			this.setState({data:response})
-			return(response)
+			this.setState({ data: response })
+			return (response)
 		}
 	};
 

@@ -6,13 +6,12 @@ import Toolbar from '@material-ui/core/Toolbar';
 import CreateIcon from '@material-ui/icons/Create';
 import FilterDramaIcon from '@material-ui/icons/FilterDrama';
 import StarIcon from '@material-ui/icons/Star';
-import Loader from 'react-loader';
 
 import Icon from './Icon';
 import CustomForm from './Form/CustomForm';
 import Table from './Table/Table';
 import Graphs from './Graphs/Graphs'
-
+import Table2 from './Table/Table2'
 
 
 const ICON_STYLE = {
@@ -39,7 +38,7 @@ class Swiper extends React.Component {
 	}
 
 	render() {
-		const { swiperPosition } = this.state;
+		const { swiperPosition, isTableLoaded } = this.state;
 
 		let reactSwipeEl;
 		return (
@@ -56,7 +55,7 @@ class Swiper extends React.Component {
 						<CustomForm />
 					</div>
 					<div>
-						<Table />
+						<Table2 />
 					</div>
 					<div>
 						<Graphs />

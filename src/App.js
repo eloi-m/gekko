@@ -8,7 +8,8 @@ const HEADER_STYLE = {
 
 const BODY_STYLE = {
 	padding: '10px',
-	backgroundColor: '#15202b'
+	backgroundColor: '#15202b',
+	minHeight: '1000px'
 };
 
 
