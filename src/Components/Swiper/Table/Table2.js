@@ -2,6 +2,8 @@ import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 import GoogleSpreadsheet from 'google-spreadsheet';
 import async from 'async';
+import '../../../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+
 
 
 //import { getData } from '../../../connection.js';
@@ -10,7 +12,6 @@ const products = [
 	{
 		id: 0, name: "test", price: "12"
 	},
-
 ];
 
 
@@ -33,11 +34,10 @@ class Table2 extends React.Component {
 
 	getLastTenRowsCallback = (error, rows) => {
 		const { loaded } = this.state
-		console.log(error);
 		const data = rows.map((row) => {
 			return { name: row.name, amount: row.amount, date: row.date }
 		});
-		this.setState({ data })
+		this.setState({ data: data.reverse() })
 		this.setState({ loaded: !loaded })
 	};
 
@@ -53,7 +53,7 @@ class Table2 extends React.Component {
 
 			},
 			function getLastTenRows(step) {
-				doc.getRows(spreadsheet, callback);
+				doc.getRows(spreadsheet, { limit: 10 }, callback);
 				step();
 			}
 		], function (err) {
@@ -69,9 +69,9 @@ class Table2 extends React.Component {
 	render() {
 		const { data } = this.state
 		return (
-			<BootstrapTable data={data} cellEdit={cellEditProp}>
-				<TableHeaderColumn dataField='name' isKey>Name</TableHeaderColumn>
-				<TableHeaderColumn dataField='amount'>Amount</TableHeaderColumn>
+			<BootstrapTable data={data} cellEdit={cellEditProp} headerStyle = {{ fontSize: '16px' }} bodyStyle={{ fontSize: '16px' }} >
+				<TableHeaderColumn dataField='name' isKey >Name</TableHeaderColumn>
+				<TableHeaderColumn dataField='amount'> Amount </TableHeaderColumn>
 				<TableHeaderColumn dataField='date'>Date</TableHeaderColumn>
 			</BootstrapTable>
 		);
