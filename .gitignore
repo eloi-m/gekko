@@ -12,8 +12,8 @@
 /build
 
 # connection to Gsheet
-
 /src/credentials.json
+/src/credentials_heroku.txt
 
 # misc
 .DS_Store

@@ -38,15 +38,12 @@ const spreadsheet = 1;
 
 let sheet;
 
-
 const uploadData = (newRow) => {
 	async.series([
 		function setAuth(step) {
 			// see notes below for authentication instructions!
 
 			doc.useServiceAccountAuth(creds, step);
-			console.log('logged in');
-
 		},
 		function getInfoAndWorksheets(step) {
 			doc.getInfo(function (err, info) {
@@ -62,7 +59,7 @@ const uploadData = (newRow) => {
 			});
 		},
 		function addRow(step) {
-			doc.addRow(spreadsheet, newRow, function(err) {
+			doc.addRow(spreadsheet, newRow, function (err) {
 				if (err) {
 					console.log('Error : ' + err)
 				}
@@ -96,9 +93,6 @@ class Swiper extends React.Component {
 		const callback = this.getLastTenRowsCallback
 		async.series([
 			function setAuth(step) {
-				// see notes below for authentication instructions!
-				var creds = require('../../credentials.json');
-
 				doc.useServiceAccountAuth(creds, step);
 				console.log('logged in');
 
@@ -142,7 +136,7 @@ class Swiper extends React.Component {
 						<Table2 data={data} />
 					</div>
 					<div>
-						<Graphs data = {data}/>
+						<Graphs data={data} />
 					</div>
 				</ReactSwipe>
 
