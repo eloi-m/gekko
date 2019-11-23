@@ -12,6 +12,7 @@
 /build
 
 # connection to Gsheet
+src/credentials.json
 
 # misc
 .DS_Store
