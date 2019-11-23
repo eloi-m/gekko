@@ -29,8 +29,7 @@ const APPBAR_STYLE = {
 	backgroundColor: '#1B3448'
 };
 
-
-const doc = new GoogleSpreadsheet('1r7wShmfQVb8SNAOu_GrMIuEP2ixhxFWS8zaXXbQ0wLI');
+const doc = new GoogleSpreadsheet('1r7wShmfQVb8SNAOu_GrMIuEP2ixhxFWS8zaXXbQ0wLI', null, { gzip: false })
 
 
 const creds = require('../../credentials.json')
