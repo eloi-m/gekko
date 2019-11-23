@@ -31,9 +31,7 @@ const APPBAR_STYLE = {
 
 const doc = new GoogleSpreadsheet('1r7wShmfQVb8SNAOu_GrMIuEP2ixhxFWS8zaXXbQ0wLI', null, { gzip: false })
 
-
 const creds = require('../../credentials.json')
-
 
 const spreadsheet = 1;
 
