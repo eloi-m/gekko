@@ -2,7 +2,6 @@ import React from 'react';
 import CustomInput from './CustomInput';
 import { Button } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-import { newData } from '../../../connection.js';
 
 
 const INPUT_STYLE = {
@@ -26,9 +25,10 @@ class CustomForm extends React.Component {
 		date: ''
 	}
 
+
 	handleSubmit() {
-		console.log(typeof newData)
-		newData(this.state)
+		const {uploadData} = this.props
+		uploadData(this.state)
 		this.setState({ name: '', amount: '', date: '' })
 	}
 
