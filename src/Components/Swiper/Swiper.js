@@ -32,7 +32,9 @@ const APPBAR_STYLE = {
 
 const doc = new GoogleSpreadsheet('1r7wShmfQVb8SNAOu_GrMIuEP2ixhxFWS8zaXXbQ0wLI');
 
+
 const creds = require('../../credentials.json')
+
 
 const spreadsheet = 1;
 
@@ -41,8 +43,6 @@ let sheet;
 const uploadData = (newRow) => {
 	async.series([
 		function setAuth(step) {
-			// see notes below for authentication instructions!
-
 			doc.useServiceAccountAuth(creds, step);
 		},
 		function getInfoAndWorksheets(step) {
