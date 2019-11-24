@@ -46,6 +46,7 @@ const creds_heroku = {
 const uploadData = (newRow) => {
 	async.series([
 		function setAuth(step) {
+			console.log(process.env.SHEET_EMAIL)
 			console.log(creds_heroku)
 			doc.useServiceAccountAuth(creds_heroku, step);
 		},
