@@ -36,19 +36,22 @@ const spreadsheet = 1;
 
 let sheet;
 
-//import creds from '../../credentials.json';
 
-const creds_heroku = {
-	'client_email': process.env.React_App_SHEET_EMAIL,
-	'private_key': process.env.React_App_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
-};
+const isRunningOnHeroku = process.env.React_App_HEROKU ? true : false;
+
+const creds = isRunningOnHeroku
+	? {
+		'client_email': process.env.React_App_SHEET_EMAIL,
+		'private_key': process.env.React_App_GOOGLE_PRIVATE_KEY.replace(/\\n/g, '\n')
+	}
+	: require('../../credentials.json')
 
 
 const uploadData = (newRow) => {
 	async.series([
 		function setAuth(step) {
-			console.log(creds_heroku)
-			doc.useServiceAccountAuth(creds_heroku, function (error) { console.log(error) });
+			console.log(creds)
+			doc.useServiceAccountAuth(creds, function (error) { console.log(error) });
 		},
 		function getInfoAndWorksheets(step) {
 			doc.getInfo(function (err, info) {
@@ -98,7 +101,7 @@ class Swiper extends React.Component {
 		const callback = this.getLastTenRowsCallback;
 		async.series([
 			function setAuth(step) {
-				doc.useServiceAccountAuth(creds_heroku, step);
+				doc.useServiceAccountAuth(creds, step);
 			},
 			function getLastTenRows(step) {
 				doc.getRows(spreadsheet, { limit: 10 }, callback);

@@ -17,4 +17,4 @@ To install packages, please run in the root folder :
 
 To run the app, please run in the root folder :
 
-`npm run start`
+`npm start`
