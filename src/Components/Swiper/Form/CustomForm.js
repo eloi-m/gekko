@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import CustomInput from './CustomInput';
 import { Button } from 'react-bootstrap';
@@ -14,7 +15,7 @@ const BUTTON_STYLE = {
 	display: 'flex',
 	justifyContent: 'center',
 	margin: '20px'
-}
+};
 
 
 
@@ -27,9 +28,9 @@ class CustomForm extends React.Component {
 
 
 	handleSubmit() {
-		const {uploadData} = this.props
-		uploadData(this.state)
-		this.setState({ name: '', amount: '', date: '' })
+		const {uploadData} = this.props;
+		uploadData(this.state);
+		this.setState({ name: '', amount: '', date: '' });
 	}
 
 	render() {
@@ -79,11 +80,11 @@ class CustomForm extends React.Component {
 						type='submit'
 					>
 						Submit
-						</Button>
+					</Button>
 				</div>
 
 			</div>
-		)
+		);
 	}
 }
 

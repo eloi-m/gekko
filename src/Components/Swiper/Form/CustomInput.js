@@ -1,10 +1,10 @@
 import React from 'react';
 // eslint-disable-next-line no-unused-vars
 import { Form, FormControl } from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap/dist/css/bootstrap.css';
 
 const STYLE = {
-	width: "50%",
+	width: '50%',
 };
 
 const TITLE_STYLE = {
@@ -13,15 +13,15 @@ const TITLE_STYLE = {
 
 class CustomInput extends React.Component {
 	state = {
-		content: ""
+		content: ''
 	}
 
 	onHandleChange = (e) => {
-		const value = e.target.value
+		const value = e.target.value;
 		this.setState({
 			content: value
 		});
-		this.props.onChange(value)
+		this.props.onChange(value);
 	}
 
 	render() {

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 import { BootstrapTable, TableHeaderColumn } from 'react-bootstrap-table';
 
@@ -9,7 +10,6 @@ const cellEditProp = {
 
 
 class Table2 extends React.Component {
-
 
 	render() {
 		const { data } = this.props;

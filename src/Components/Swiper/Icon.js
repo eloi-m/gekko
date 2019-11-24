@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
 
 
@@ -9,9 +10,9 @@ const NOT_SELECTED_STYLE = {};
 
 class Icon extends React.Component {
 	render() {
-		const { Icon, isSelected } = this.props
+		const { Icon, isSelected } = this.props;
 
-		const STYLE = isSelected ? SELECTED_STYLE : NOT_SELECTED_STYLE
+		const STYLE = isSelected ? SELECTED_STYLE : NOT_SELECTED_STYLE;
 
 		return (
 			<div

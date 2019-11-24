@@ -4,7 +4,7 @@ import React from 'react';
 
 class Graphs extends React.Component {
 	state = {
-		data: "Graphs will soon go here"
+		data: 'Graphs will soon go here'
 	}
 
 	render() {

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import ReactSwipe from 'react-swipe';
@@ -11,10 +12,11 @@ import async from 'async';
 
 import Icon from './Icon';
 import CustomForm from './Form/CustomForm';
-import Graphs from './Graphs/Graphs'
-import Table2 from './Table/Table2'
+import Graphs from './Graphs/Graphs';
+import Table2 from './Table/Table2';
 
 import '../../../node_modules/react-bootstrap-table/dist/react-bootstrap-table-all.min.css';
+//import creds from '../../credentials.json';
 
 
 const ICON_STYLE = {
@@ -29,18 +31,22 @@ const APPBAR_STYLE = {
 	backgroundColor: '#1B3448'
 };
 
-const doc = new GoogleSpreadsheet('1r7wShmfQVb8SNAOu_GrMIuEP2ixhxFWS8zaXXbQ0wLI', null, { gzip: false })
-
-const creds = require('../../credentials.json')
+const doc = new GoogleSpreadsheet('1r7wShmfQVb8SNAOu_GrMIuEP2ixhxFWS8zaXXbQ0wLI', null, { gzip: false });
 
 const spreadsheet = 1;
 
 let sheet;
 
+const creds_heroku = {
+	'client_email': process.env.SHEET_EMAIL,
+	'private_key': process.env.GOOGLE_PRIVATE_KEY
+};
+
+
 const uploadData = (newRow) => {
 	async.series([
 		function setAuth(step) {
-			doc.useServiceAccountAuth(creds, step);
+			doc.useServiceAccountAuth(creds_heroku, step);
 		},
 		function getInfoAndWorksheets(step) {
 			doc.getInfo(function (err, info) {
@@ -58,7 +64,7 @@ const uploadData = (newRow) => {
 		function addRow(step) {
 			doc.addRow(spreadsheet, newRow, function (err) {
 				if (err) {
-					console.log('Error : ' + err)
+					console.log('Error : ' + err);
 				}
 			});
 			step();
@@ -78,19 +84,19 @@ class Swiper extends React.Component {
 	};
 
 	getLastTenRowsCallback = (error, rows) => {
-		const { loaded } = this.state
+		const { loaded } = this.state;
 		const data = rows.map((row) => {
-			return { name: row.name, amount: row.amount, date: row.date }
+			return { name: row.name, amount: row.amount, date: row.date };
 		});
-		this.setState({ data: data.reverse() })
-		this.setState({ loaded: !loaded })
+		this.setState({ data: data.reverse() });
+		this.setState({ loaded: !loaded });
 	};
 
 	getData = () => {
-		const callback = this.getLastTenRowsCallback
+		const callback = this.getLastTenRowsCallback;
 		async.series([
 			function setAuth(step) {
-				doc.useServiceAccountAuth(creds, step);
+				doc.useServiceAccountAuth(creds_heroku, step);
 				console.log('logged in');
 
 			},
@@ -140,7 +146,7 @@ class Swiper extends React.Component {
 				<AppBar position="fixed" style={APPBAR_STYLE} >
 					<Toolbar style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
 						<div
-							onClick={() => { reactSwipeEl.slide(0) }}
+							onClick={() => { reactSwipeEl.slide(0); }}
 							style={ICON_STYLE}
 						>
 							<Icon
@@ -149,7 +155,7 @@ class Swiper extends React.Component {
 							/>
 						</div>
 						<div
-							onClick={() => { reactSwipeEl.slide(1) }}
+							onClick={() => { reactSwipeEl.slide(1); }}
 							style={ICON_STYLE}
 						>
 							<Icon
@@ -158,7 +164,7 @@ class Swiper extends React.Component {
 							/>
 						</div>
 						<div
-							onClick={() => { reactSwipeEl.slide(2) }}
+							onClick={() => { reactSwipeEl.slide(2); }}
 							style={ICON_STYLE}
 						>
 							<Icon
