@@ -37,7 +37,7 @@ const spreadsheet = 1;
 let sheet;
 
 
-const isRunningOnHeroku = process.env.React_App_HEROKU ? true : false;
+const isRunningOnHeroku = process.env.React_App_HEROKU === 'true' ? true : false;
 
 const creds = isRunningOnHeroku
 	? {
@@ -47,46 +47,34 @@ const creds = isRunningOnHeroku
 	: require('../../credentials.json')
 
 
-const uploadData = (newRow) => {
-	async.series([
-		function setAuth(step) {
-			console.log(creds)
-			doc.useServiceAccountAuth(creds, function (error) { console.log(error) });
-		},
-		function getInfoAndWorksheets(step) {
-			doc.getInfo(function (err, info) {
-				if (err) {
-					console.log(err);
-				}
-				else {
-					console.log('Loaded doc: ' + info.title + ' by ' + info.author.email);
-					sheet = info.worksheets[0];
-					console.log('sheet 1: ' + sheet.title + ' ' + sheet.rowCount + 'x' + sheet.colCount);
-					step();
-				}
-			});
-		},
-		function addRow(step) {
-			doc.addRow(spreadsheet, newRow, function (err) {
-				if (err) {
-					console.log('Error : ' + err);
-				}
-			});
-			step();
-		}
-	], function (err) {
-		if (err) {
-			console.log('Error: ' + err);
-		}
-	});
-};
 
 class Swiper extends React.Component {
 	state = {
 		swiperPosition: 0,
 		isTableLoaded: false,
-		data: []
+		data: [],
 	};
+
+	uploadData = (newRow) => {
+		async.series([
+			function setAuth(step) {
+				doc.useServiceAccountAuth(creds, step);
+			},
+			function addRow(step) {
+				doc.addRow(spreadsheet, newRow, function (err) {
+					if (err) {
+						console.log('Error : ' + err);
+					}
+				});
+				step();
+			}
+		], function (err) {
+			if (err) {
+				console.log('Error: ' + err);
+			}
+		});
+	};
+
 
 	getLastTenRowsCallback = (error, rows) => {
 		const { loaded } = this.state;
@@ -121,8 +109,12 @@ class Swiper extends React.Component {
 		this.setState({ swiperPosition: index });
 	}
 
+	handleFormSubmit = (childData) => {
+		this.uploadData(childData)
+	}
+
 	render() {
-		const { swiperPosition, isTableLoaded, data } = this.state;
+		const { swiperPosition, data } = this.state;
 
 		let reactSwipeEl;
 		return (
@@ -136,7 +128,7 @@ class Swiper extends React.Component {
 					ref={el => { (reactSwipeEl = el); }}
 				>
 					<div>
-						<CustomForm uploadData={uploadData} />
+						<CustomForm sendDataToSwiper={this.handleFormSubmit} />
 					</div>
 					<div>
 						<Table2 data={data} />

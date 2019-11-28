@@ -28,8 +28,8 @@ class CustomForm extends React.Component {
 
 
 	handleSubmit() {
-		const {uploadData} = this.props;
-		uploadData(this.state);
+		const { sendDataToSwiper } = this.props;
+		sendDataToSwiper(this.state);
 		this.setState({ name: '', amount: '', date: '' });
 	}
 
