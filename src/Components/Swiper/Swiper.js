@@ -25,6 +25,7 @@ const ICON_STYLE = {
 };
 
 const APPBAR_STYLE = {
+	marginBot: '1000px',
 	top: 'auto',
 	bottom: 0,
 	backgroundColor: '#1B3448'
@@ -61,6 +62,10 @@ class Swiper extends React.Component {
 				doc.useServiceAccountAuth(creds, step);
 			},
 			function addRow(step) {
+				const today = new Date();
+				const date = today.getDate() + '/' + (today.getMonth() + 1) + '/' + today.getFullYear();
+				const time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+				newRow['time'] = date + ' ' + time
 				doc.addRow(spreadsheet, newRow, function (err) {
 					if (err) {
 						console.log('Error : ' + err);
@@ -73,15 +78,15 @@ class Swiper extends React.Component {
 				console.log('Error: ' + err);
 			}
 		});
-	};
 
+	};
 
 	getLastTenRowsCallback = (error, rows) => {
 		const { loaded } = this.state;
 		const data = rows.map((row) => {
 			return { name: row.name, amount: row.amount, date: row.date };
 		});
-		this.setState({ data: data.reverse() });
+		this.setState({ data });
 		this.setState({ loaded: !loaded });
 	};
 
@@ -92,7 +97,7 @@ class Swiper extends React.Component {
 				doc.useServiceAccountAuth(creds, step);
 			},
 			function getLastTenRows(step) {
-				doc.getRows(spreadsheet, { limit: 10 }, callback);
+				doc.getRows(spreadsheet, { limit: 10, orderby: 'time', reverse: true }, callback);
 				step();
 			}
 		], function (err) {
@@ -110,7 +115,7 @@ class Swiper extends React.Component {
 	}
 
 	handleFormSubmit = (childData) => {
-		this.uploadData(childData)
+		this.setState({ data: [] })
 	}
 
 	render() {
@@ -118,7 +123,7 @@ class Swiper extends React.Component {
 
 		let reactSwipeEl;
 		return (
-			<div>
+			<div >
 				<ReactSwipe
 					className="carousel"
 					swipeOptions={{
@@ -137,7 +142,6 @@ class Swiper extends React.Component {
 						<Graphs data={data} />
 					</div>
 				</ReactSwipe>
-
 				<AppBar position="fixed" style={APPBAR_STYLE} >
 					<Toolbar style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }} >
 						<div
@@ -169,7 +173,6 @@ class Swiper extends React.Component {
 						</div>
 					</Toolbar>
 				</AppBar>
-
 
 			</div >
 		);

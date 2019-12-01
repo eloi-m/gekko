@@ -8,16 +8,15 @@ const cellEditProp = {
 };
 
 
-
 class Table2 extends React.Component {
 
 	render() {
 		const { data } = this.props;
 		return (
-			<BootstrapTable data={data} 
-				cellEdit={cellEditProp} 
-				headerStyle={{ fontSize: '16p'}}
-				bodyStyle={{ fontSize: '16px'}}
+			<BootstrapTable data={data}
+				cellEdit={cellEditProp}
+				headerStyle={{ fontSize: '16p' }}
+				bodyStyle={{ fontSize: '16px' }}
 			>
 				<TableHeaderColumn dataField='name' isKey >Name</TableHeaderColumn>
 				<TableHeaderColumn dataField='amount'> Amount </TableHeaderColumn>
