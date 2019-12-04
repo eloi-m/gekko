@@ -9,7 +9,6 @@ const cellEditProp = {
 
 
 class Table2 extends React.Component {
-
 	render() {
 		const { data } = this.props;
 		return (

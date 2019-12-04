@@ -53,7 +53,7 @@ class Swiper extends React.Component {
 	state = {
 		swiperPosition: 0,
 		isTableLoaded: false,
-		data: [],
+		data: []
 	};
 
 	uploadData = (newRow) => {
@@ -78,7 +78,6 @@ class Swiper extends React.Component {
 				console.log('Error: ' + err);
 			}
 		});
-
 	};
 
 	getLastTenRowsCallback = (error, rows) => {
@@ -87,7 +86,6 @@ class Swiper extends React.Component {
 			return { name: row.name, amount: row.amount, date: row.date };
 		});
 		this.setState({ data });
-		this.setState({ loaded: !loaded });
 	};
 
 	getData = () => {
