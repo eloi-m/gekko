@@ -52,7 +52,6 @@ const creds = isRunningOnHeroku
 class Swiper extends React.Component {
 	state = {
 		swiperPosition: 0,
-		isTableLoaded: false,
 		data: []
 	};
 
@@ -113,12 +112,14 @@ class Swiper extends React.Component {
 	}
 
 	handleFormSubmit = (childData) => {
-		this.setState({ data: [] })
+		const { data } = this.state
+		this.uploadData(childData);
+		data.unshift(childData);
+		this.setState({ data });
 	}
 
 	render() {
 		const { swiperPosition, data } = this.state;
-
 		let reactSwipeEl;
 		return (
 			<div >

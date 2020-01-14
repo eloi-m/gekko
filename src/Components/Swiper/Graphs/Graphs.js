@@ -63,8 +63,8 @@ class Graphs extends React.Component {
 
 	render() {
 		const { options, series } = chartContent;
-		console.log(this.state)
-		console.log(chartContent)
+		//console.log(this.state)
+		//console.log(chartContent)
 		return (
 			<div className="app">
 				<div className="row">
@@ -73,6 +73,7 @@ class Graphs extends React.Component {
 							options={options}
 							series={series}
 							type="bar"
+							width="500"
 						/>
 					</div>
 				</div>
